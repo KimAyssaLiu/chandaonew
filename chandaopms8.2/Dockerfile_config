@@ -1,0 +1,20 @@
+FROM python:3.7.3-stretch
+
+
+# RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
+# ADD sources.list /etc/apt/sources.list
+
+ADD /config/requirements.txt /opt/config/requirements.txt
+
+RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -r /opt/config/requirements.txt
+ADD /config/add.py /opt/config/add.py
+ADD /config/addproj.py /opt/config/addproj.py
+ADD /config/autoscript.sh /opt/config/autoscript.sh
+
+RUN chmod +x /opt/config/autoscript.sh
+
+
+
+
+
+

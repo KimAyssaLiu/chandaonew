@@ -1,0 +1,27 @@
+FROM python:3.7.3-stretch
+
+
+# RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
+# ADD sources.list /etc/apt/sources.list
+
+
+
+# RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple requestes
+
+ADD /poc/requirements.txt /opt/poc/requirements.txt
+
+RUN pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple -r /opt/poc/requirements.txt
+
+ADD /poc/sql.py /opt/poc/sql.py
+
+ADD /poc/fileread.py /opt/poc/fileread.py
+
+ADD /poc/autoscript.sh /opt/poc/autoscript.sh
+
+# RUN chmod +x /autoscript.sh
+
+RUN chmod +x /opt/poc/autoscript.sh
+
+
+# CMD ["bash", "-c", "echo 1 && bash /autoscript.sh"]
+
